@@ -1,23 +1,38 @@
-#맨첨에 이해가 잘 안됬는데 손으로 써보니 이해가 되었음!
+# 맨첨에 이해가 잘 안됬는데 손으로 써보니 이해가 되었음!
+# 1935 후위 표기식2
+n = int(input())
+S = input()                
+num = [0]*n				  
 
-n= int(input())
-s = input()
-abc="ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-num = dict()
-for _ in range(n):
-    num[abc[_]] = int(input())
-   
-cal = "*/+-"
-stack=[]
-for i in s:
-    stack.append(i)
-    
-tmp=[]
+for i in range(n):
+    num[i] = int(input())  
+abc = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+stack = []                    
 
-for j in stack:
-    if j in abc:
-        tmp.append(j)
-        
-    else:
-        tmp.pop()
-        tmp.pop()
+for i in S :					
+    if i in abc :		
+        stack.append(num[ord(i)-ord('A')])
+    else :						
+        str2 = stack.pop()		
+        str1 = stack.pop()
+
+        if i =='+' :
+            stack.append(str1+str2)
+        elif i == '-' :
+            stack.append(str1-str2)
+        elif i == '*' :
+            stack.append(str1*str2)
+        elif i == '/' :
+            stack.append(str1/str2)
+
+print('%.2f' %stack[0])
+
+
+
+
+
+
+
+
+
+
